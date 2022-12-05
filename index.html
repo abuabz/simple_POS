@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pos</title>
+    <link href="Task3.css" type="text/css" rel="stylesheet">  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <link href="invoice.css" type="text/css" rel="stylesheet"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+    <div id="main-div"><br>
+       
+        
+        
+        <div id="sub-div1"><br>
+            <div id="add-icon-div">
+                <input type="text" id="product_name" placeholder="Product Name" >
+                <input type="number" id="product_price" placeholder="Product Price">
+                <button type="button" id="add-btn-product" class="btn btn-success" >Add Products</button>
+                <br><br>
+                <input type="text" id="customer_name" placeholder="Customer Name" >
+                <button type="button" id="add-btn-customer" class="btn btn-success" >Add Customer</button>
+            </div>
+            
+        </div>
+        <div id="table-div">
+            <div id="table-1">
+                <table id="tblData" class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <tr> 
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th class="tdaction">Action</th>
+
+                        </tr>
+
+                    </thead>
+                    <tbody id="table1"> 
+                        
+                    </tbody>
+                </table>
+            </div>      
+
+        </div>
+
+           <div id="select-customer">
+            <select class="custom-select custom-select-lg mb-3" id="select-box1" >
+                <option selected>Customer Select</option>
+              </select>
+    
+             </div>
+    
+            <div id="table-bill">
+              
+              
+                <table id="tbl-bill" class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <tr>    
+                            <th>Product Name</th>
+                            <th>Unit Price</th>
+                            <th>Quantity</th>
+                            <th>Total Price</th>
+                            <th>Actions</th>
+                        </tr>
+
+                    </thead>
+                    <tbody id="table2"> 
+                        
+                    </tbody>
+                </table>
+                <div id="subtotal">
+                    <p id="sub-total-text"><b>TOTAL AMOUNT OF PURCHASE : ₹ <span id="sum"></span>/-</b></p>
+                </div> 
+                <div><button onclick="openPopup()" id="complete" class='btn btn-success  btn-edit' type="submit">Complete</button>
+                </div> 
+            </div>
+            
+            <div class="popup" id="popup" >
+                <img src="404-tick.png" alt="Loading">
+                <h2>THANK YOU</h2>
+                <p>Your order is successfully completed</p>
+                <button  type="button" onclick="closePopup()"  id="btn-invoice">INVOICE</button>
+
+                
+            </div>
+    </div>
+    <script>
+        let popup=document.getElementById("popup");
+        function openPopup(){
+        popup.classList.add("open-popup");
+            }
+        function closePopup(){
+        popup.classList.remove("open-popup");
+            }
+    </script>
+
+<div class="col-md-12" id="main">   
+    <div class="row">
+        
+           <div class="receipt-main col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3" id="www">
+            <div id="ivoice-paid">
+                <img id="invoice-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1_e944GKltQBUepMkBDvHuX4UBuGnxeYdkIRutCOUby_WNLSa3-oy_MWZy1_nMkjGB_o&usqp=CAU" alt="image">
+            </div>  
+            <div class="row">
+                   <div class="receipt-header">
+                    <div class="receipt-left" >
+                        <p id="invoice-id">INVOICE #123</p>
+                    </div>
+                       <div class="col-xs-6 col-sm-6 col-md-6" >
+                        
+                                   
+                            
+                           <div class="receipt-left">
+                               <img class="img-responsive" alt="" src="data:image/png;base64,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" style="width: 71px; border-radius: 43px;">
+                           </div>
+                       </div>
+                       <div class="col-xs-6 col-sm-6 col-md-6 text-right" id="cybro">
+                           <div class="receipt-right">
+                               <h5>Cybrosys Technologys</h5>
+                               <p><b>Mobile :</b>+1 3649-6589 <i class="fa fa-phone"></i></p>
+                               <p><b>Email :</b>cybrosys@gmail.com <i class="fa fa-envelope-o"></i></p>
+                               <p><b>Address :</b>Calicut,Kerala<i class="fa fa-location-arrow"></i></p>
+                           </div>
+                       </div>
+                       <div class="col-xs-6 col-sm-6 col-md-6 text-left" id="customer-invoice">
+                        <div class="receipt-right">
+                            <h5 id="cus-name">Customer: </h5>
+                            <p><b>Mobile :</b> +91 8111866093</p>
+                            <p><b>Email :</b> customer@gmail.com</p>
+                            <p><b>Address :</b>Malappuram,Kerala</p>
+                        </div>
+                    </div>
+                   </div>
+                </div>
+                <div id='invoice-table'>
+                        <table id="tbl-invoice" class="table table-bordered table-hover table-striped">
+                            <thead>
+                                <tr > 
+                                    <th>Product Name</th>
+                                    <th>Unit Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total Price</th>
+                                </tr>
+        
+                            </thead>
+                            <tbody id="table3"> 
+                                
+                            </tbody>
+                        </table>
+                        <div id="subtotal">
+                            <p id="sub-total-text"><b>TOTAL AMOUNT OF PURCHASE : ₹ <span id="summ"></span>/-</b></p>
+                        </div> 
+                </div>
+               <div class="row">
+                   <div class="receipt-header receipt-header-mid receipt-footer">
+                       <div class="col-xs-8 col-sm-8 col-md-8 text-left">
+                           <div class="receipt-right">
+                               <p id="dateee">Date :<p id="datee"></p></p>
+                               <h5 style="color: rgb(140, 140, 140);">Thanks for shopping.!</h5>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+               <button type="button" id="close" class="btn btn-success" >X</button>
+           </div>    
+       </div>
+      
+   </div>
+</div>
+
+
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="task3.js"></script>
+
+</body>
+</html>
